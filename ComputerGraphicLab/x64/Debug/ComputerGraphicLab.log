@@ -1,0 +1,151 @@
+﻿  LineShape.cpp
+  main.cpp
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(230,43): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(230,32): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(232,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(232,38): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(236,43): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(236,32): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(238,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(238,38): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(243,43): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(243,32): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(245,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(245,38): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(249,43): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(249,32): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(251,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(251,38): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(256,40): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(256,32): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(258,42): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(258,35): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(261,40): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(261,32): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(263,42): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(263,35): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(266,40): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(266,32): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(268,42): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(268,35): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(271,40): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(271,32): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(273,42): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Utils.h(273,35): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(722,10): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(731,20): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(731,17): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(918,21): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(918,17): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(919,21): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(919,17): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(929,8): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(930,11): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(934,8): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(935,11): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(939,8): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(940,11): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(944,8): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(945,11): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(949,9): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(950,9): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(955,9): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(956,9): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(977,21): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(977,17): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(978,21): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(978,17): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(985,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(986,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(990,9): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(990,17): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(995,9): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(995,17): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(995,39): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(995,35): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(999,9): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(999,17): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1006,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1007,17): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1011,9): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1011,17): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1016,9): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1016,17): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1016,39): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1016,35): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1020,9): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1020,17): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1079,35): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1080,35): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1131,35): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1132,35): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1264,36): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1274,36): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Painting.h(1275,36): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Tinky.h(23,29): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Tinky.h(23,29): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Tinky.h(23,49): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Tinky.h(23,49): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Tinky.h(24,12): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Tinky.h(24,12): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Tinky.h(24,32): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Tinky.h(24,32): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Tinky.h(25,12): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Tinky.h(25,12): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Tinky.h(26,13): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Tinky.h(26,13): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Tinky.h(27,13): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Tinky.h(27,13): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Tinky.h(27,33): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Tinky.h(27,33): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Dipsy.h(23,29): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Dipsy.h(23,29): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Dipsy.h(23,49): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Dipsy.h(23,49): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Dipsy.h(24,12): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Dipsy.h(24,12): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Dipsy.h(24,32): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Dipsy.h(24,32): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Dipsy.h(25,12): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Dipsy.h(25,12): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Dipsy.h(26,13): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Dipsy.h(26,13): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Dipsy.h(27,13): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Dipsy.h(27,13): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Dipsy.h(27,33): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Dipsy.h(27,33): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\LaaLaa.h(25,27): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\LaaLaa.h(25,27): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\LaaLaa.h(25,47): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\LaaLaa.h(25,47): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\LaaLaa.h(26,12): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\LaaLaa.h(26,12): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\LaaLaa.h(26,32): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\LaaLaa.h(26,32): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\LaaLaa.h(27,12): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\LaaLaa.h(27,12): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\LaaLaa.h(28,13): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\LaaLaa.h(28,13): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\LaaLaa.h(29,13): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\LaaLaa.h(29,13): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\LaaLaa.h(29,33): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\LaaLaa.h(29,33): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Po.h(25,26): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Po.h(25,26): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Po.h(25,46): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Po.h(25,46): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Po.h(26,12): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Po.h(26,12): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Po.h(26,32): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Po.h(26,32): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Po.h(27,12): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Po.h(27,12): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Po.h(28,13): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Po.h(28,13): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Po.h(29,13): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Po.h(29,13): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Po.h(29,33): warning C4838: 从“double”转换到“int”需要收缩转换
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Po.h(29,33): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+  Shape.cpp
+  正在生成代码...
+  ComputerGraphicLab.vcxproj -> D:\上大课程\计算机图形学\computer-graphic-labs\x64\Debug\ComputerGraphicLab.exe
