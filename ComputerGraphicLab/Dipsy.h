@@ -11,20 +11,18 @@ public:
 
 Dipsy::Dipsy()
 {
-	name = "Dipsy";
-	color = RGB(0, 128, 0);		// 绿色
-	tallRate = 1.1;
-	pointOrigin = Point(585, 680);
+	string Name = "Dipsy";
+	COLORREF Color = RGB(0, 255, 0);		// 绿色
+	double TallRate = 1.1;
+	Point PointOrigin = Point(585, 680);
+	sameCreate(Name, Color, TallRate, PointOrigin, RGB(102, 87, 87));
+	setorigin(585, 680);
 
-	int origin_x = pointOrigin.x, origin_y = pointOrigin.y;
-	int height = 320, width = 140;
-	setorigin(origin_x, origin_y);	// 重置坐标原点
+	Painting paintDipsy = Painting();
+	paintDipsy.setColor(Color);
+	paintDipsy.Bresenhamline(-8, -410, -5, -490);
+	paintDipsy.Bresenhamline(8, -410, 5, -490);
+	setcolor(Color);
+	arc(-5, -495, 5, -485, 0, PI);
 
-	int rectDipsy[] = { -width * tallRate, -height * tallRate,
-					width * tallRate, -height * tallRate,
-					width * tallRate, 0,
-					-width * tallRate,0,
-					-width * tallRate, -height * tallRate };
-	Painting drawRectDipsy = Painting();
-	drawRectDipsy.myDrawPolygonReal(rectDipsy, 4);
 }

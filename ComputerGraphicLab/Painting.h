@@ -1,6 +1,7 @@
 #pragma once
 #pragma warning(disable : 4996)
 
+#include <easyx.h>
 #include <graphics.h>			// 引用图形库头文件
 #include <stdlib.h>
 #include <conio.h>
@@ -72,6 +73,7 @@ public:
 	// 1.2 圆形绘画
 	void CirclePoints(int x, int y, int dx, int dy, int color, int weightType);		// 八分对称性 画圆
 	void MidPointCircle();				// 中点画圆算法
+	void MidPointCircle(int x1, int y1, double r);	// 中点画圆算法2
 
 	// 2 任意多边形的绘画、填充和裁剪
 	void seedFillAlgorithm(int x[], int y[],int n,int newcolor,int x0,int y0);		 //种子填充法
@@ -720,6 +722,37 @@ void Painting::MidPointCircle()//中点画圆算法
 	int i = 0;
 	float x, y, e;
 	float r = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+	x = 0;
+	y = r;			//（x,y）用于确定第一个点
+	e = 1 - r;		//取得初始e
+
+	int* mask = LineType(lineType);
+	while (x <= y) {
+		if (mask[i % 32])
+		{
+			CirclePoints(x, y, x1, y1, color, weightType);	// 八分对称点
+		}
+		i++;
+		if (e < 0) {
+			x++;
+			e = e + 2 * x + 3;
+		}
+		else {
+			x++;
+			y--;
+			e = e + 2 * (x - y) + 5;
+		}
+
+	}
+}
+
+// 中点算法画圆2
+void Painting::MidPointCircle(int x1, int y1, double r)
+{
+	int lineType = getLineType(), weightType = getWeightType();
+	int color = getColor();
+	int i = 0;
+	float x, y, e;
 	x = 0;
 	y = r;			//（x,y）用于确定第一个点
 	e = 1 - r;		//取得初始e

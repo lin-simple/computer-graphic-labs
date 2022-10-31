@@ -8,20 +8,8 @@ int main()
 {
 	initgraph(WINDOW_LENGTH, WINDOW_WIDTH, EW_SHOWCONSOLE);
 
-	setbkcolor(BLACK);
-
-	Tinky tinky = Tinky();
-	Dipsy dipsy = Dipsy();
-	LaaLaa laalaa = LaaLaa();
-	Po po = Po();
-
-	cout << laalaa.getName() << endl;
-
-
-	//cout << po.getColor() << endl;
-
-	// 先隐藏功能，便于测试
-	/*
+	/**/
+	
 	while (1) {
 		cout << "\n**************************" << endl
 			<< "*    -----主界面-----    *" << endl
@@ -460,6 +448,14 @@ int main()
 			break;
 		}
 		case 2: {
+			setbkcolor(WHITE);
+			cleardevice();
+
+			Tinky tinky = Tinky();
+			Dipsy dipsy = Dipsy();
+			LaaLaa laalaa = LaaLaa();
+			Po po = Po();
+
 			rectangle(400, 5, 700, 25);
 			outtextxy(420, 7, L"致童年——天线宝宝主题二维动画");
 			
@@ -473,7 +469,7 @@ int main()
 		if (CHOICE == 0)
 			break;
 	}
-	*/
+	
 	
 	_getch();
 	closegraph();

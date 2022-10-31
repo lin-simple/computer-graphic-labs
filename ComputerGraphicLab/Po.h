@@ -13,20 +13,19 @@ private:
 
 Po::Po()
 {
-	name = "Po";
-	color = RGB(255, 0, 0);		// 红色
-	tallRate = 0.8;
-	pointOrigin = Point(1313, 680);
+	string Name = "PoPo";
+	COLORREF Color = RGB(255, 0, 0);		// 红色
+	double TallRate = 0.8;
+	Point PointOrigin = Point(1313, 680);
+	sameCreate(Name, Color, TallRate, PointOrigin, WHITE);
+	setorigin(1313, 680);
 
-	int origin_x = pointOrigin.x, origin_y = pointOrigin.y;
-	int height = 320, width = 140;
-	setorigin(origin_x, origin_y);	// 重置坐标原点
+	Painting paintPo = Painting();
+	paintPo.setColor(Color);
+	paintPo.Bresenhamline(-5, -410, -5, -425);		// 5, 410
+	paintPo.Bresenhamline(5, -410, 5, -425);
+	setcolor(Color);
+	circle(0, -440, 17);
+	circle(0, -440, 10);
 
-	int rectPo[] = { -width * tallRate, -height * tallRate,
-					width * tallRate, -height * tallRate,
-					width * tallRate, 0,
-					-width * tallRate,0,
-					-width * tallRate, -height * tallRate };
-	Painting drawRectPo = Painting();
-	drawRectPo.myDrawPolygonReal(rectPo, 4);
 }

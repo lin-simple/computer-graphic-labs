@@ -11,21 +11,21 @@ public:
 
 Tinky::Tinky()
 {
-	name = "Tinky";
-	color = RGB(128, 0, 128);	// 紫色
-	tallRate = 1.25;
-	pointOrigin = Point(195, 680);
+	string Name = "Tinky";
+	COLORREF Color = RGB(51, 0, 102);		// 紫色 RGB(128, 0, 128)
+	double TallRate = 1.25;
+	Point PointOrigin = Point(195, 680);
+	sameCreate(Name, Color, TallRate, PointOrigin, WHITE);
+	setorigin(195, 680);
 
-	int origin_x = pointOrigin.x, origin_y = pointOrigin.y;
-	int height = 320, width = 140;
-	setorigin(origin_x, origin_y);	// 重置坐标原点
+	// 外圈三角形
+	Painting paintTinky = Painting();
+	paintTinky.setColor(Color);
+	int edges[] = { -8, -405, -8, -420, -50, -500, 50, -500, 8, -420, 8, -405, -8, -405 };
+	paintTinky.myDrawPolygonReal(edges, 6);
+	// 内圈三角形
+	int edges2[] = { 0, -430, -31, -490, 31, -490, 0, -430 };
+	paintTinky.myDrawPolygonReal(edges2, 3);
 
-	int rectTinky[] = { -width * tallRate, -height * tallRate,
-					width * tallRate, -height * tallRate,
-					width * tallRate, 0,
-					-width * tallRate,0,
-					-width * tallRate, -height * tallRate };
-	Painting drawRectTinky = Painting();
-	drawRectTinky.myDrawPolygonReal(rectTinky, 4);
 }
 
