@@ -1,2 +1,2 @@
 # Computer Graphic Labs
-The project is completed by me, feng X, Siyi Z and Hanyue L.
+The project is also completed by feng X, Siyi Z and Hanyue L.
