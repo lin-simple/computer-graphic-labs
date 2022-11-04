@@ -95,4 +95,16 @@ D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Baby
 D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Baby.h(145,14): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
 D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Baby.h(146,14): warning C4838: 从“double”转换到“int”需要收缩转换
 D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\Baby.h(146,14): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\BezierCurve.h(76,25): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\BezierCurve.h(76,18): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\BezierCurve.h(77,25): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\BezierCurve.h(77,18): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\BezierCurve.h(78,25): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\BezierCurve.h(78,18): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\BezierCurve.h(79,25): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\BezierCurve.h(79,18): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\BezierCurve.h(127,101): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\BezierCurve.h(128,101): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\BezierCurve.h(264,32): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
+D:\上大课程\计算机图形学\computer-graphic-labs\ComputerGraphicLab\BezierCurve.h(264,24): warning C4244: “参数”: 从“int”转换到“GLfloat”，可能丢失数据
   ComputerGraphicLab.vcxproj -> D:\上大课程\计算机图形学\computer-graphic-labs\x64\Debug\ComputerGraphicLab.exe

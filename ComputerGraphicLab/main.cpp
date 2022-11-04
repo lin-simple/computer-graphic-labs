@@ -3,12 +3,11 @@
 #include "Dipsy.h"
 #include "LaaLaa.h"
 #include "Po.h"
+#include "BezierCurve.h"
 
-int main()
+int main(int argc, char** argv)
 {
 	initgraph(WINDOW_LENGTH, WINDOW_WIDTH, EW_SHOWCONSOLE);
-
-	/**/
 	
 	while (1) {
 		cout << "\n**************************" << endl
@@ -149,7 +148,7 @@ int main()
 				case 'b': {	// 圆形绘制
 					while (1)
 					{
-						int x1, y1, x2, y2, weightType;
+						int x1, y1, r, weightType;
 						string color;
 						int lineType;
 						char ch;
@@ -160,8 +159,8 @@ int main()
 
 						cout << "请输入圆起点(圆心)坐标: ";
 						cin >> x1 >> y1;
-						cout << "请输入圆终点坐标: ";
-						cin >> x2 >> y2;
+						cout << "请输入圆半径: ";
+						cin >> r;
 						cout << "请输入线段类型 [0.实线、1.点划线、2.虚线、3.长短线交替]: ";
 						cin >> lineType;
 						cout << "请输入线段宽度: ";
@@ -170,12 +169,11 @@ int main()
 						cin >> color;
 
 						// 设置属性
-						paintingCircle.setCoord(x1, y1, x2, y2);
 						paintingCircle.setWeightType(weightType);
 						paintingCircle.setLineType(lineType);
 						paintingCircle.setColor(translateColor(color));
 
-						paintingCircle.MidPointCircle();
+						paintingCircle.MidPointCircle(x1, y1, r);
 						_getch();
 
 					}
@@ -368,6 +366,10 @@ int main()
 					int type;
 					cout << "请输入绘画图形类型 [0.直线、1.圆、2.多边形、3.曲线绘制]: ";
 					cin >> type;
+					if (type == 3) {
+						closegraph();
+						drawCurve(argc, argv);
+					}
 					if (type != 2) {
 						if (type != 3)
 						{
@@ -417,20 +419,10 @@ int main()
 					//PointFill(280, 200, RED);
 
 					//_getch();
+					//closegraph();
 
+					//drawCurve(argc, argv);
 
-					//while (1) {
-					//	MOUSEMSG m = GetMouseMsg();
-					//	TCHAR control[10];
-					//	switch (m.uMsg)
-					//	{
-					//	case WM_LBUTTONDOWN:
-					//		_stprintf(control, _T("%d,%d"), m.x, m.y);        // 高版本 VC 推荐使用 _stprintf_s 函数
-					//		outtextxy(m.x, m.y, control);                //输出鼠标位置
-					//	default:
-					//		break;
-					//	}
-					//}
 					break;
 				}
 

@@ -713,7 +713,7 @@ void Painting::CirclePoints(int x, int y, int dx, int dy, int color, int weightT
 }
 
 // 中点算法画圆
-void Painting::MidPointCircle()//中点画圆算法
+void Painting::MidPointCircle ()//中点画圆算法
 {
 	int x1 = getX1(), y1 = getY1();
 	int x2 = getX2(), y2 = getY2();
