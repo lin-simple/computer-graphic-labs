@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string.h>
 #include <math.h>
+#include <cmath>
 #include <vector>
 #include <windows.h>
 #include <time.h>
@@ -20,6 +21,7 @@
 #include "LineShape.h"
 #include "BoundingBox.h"
 #include "Matrix.h"
+#include "SolidCircleshape.h"
 
 #define _CRT_SECURE_NO_WARNINGS 1
 #define LEFT 1
@@ -30,6 +32,7 @@
 #define MAX_VOL 20
 #define WINDOW_LENGTH 1500	// 窗口大小
 #define WINDOW_WIDTH 700
+#define PI 3.1415926
 
 
 using namespace std;
@@ -70,15 +73,18 @@ public:
 	void MidPointline();		// 中点算法绘画直线
 	void Bresenhamline();		// Bresenham算法绘画直线
 	void Bresenhamline(int x1, int y1, int x2, int y2);		// 重载 Bresenham 算法绘画直线
-	// 1.2 圆形绘画
+	// 1.2 圆形/圆弧绘画
 	void CirclePoints(int x, int y, int dx, int dy, int color, int weightType);		// 八分对称性 画圆
 	void MidPointCircle();				// 中点画圆算法
 	void MidPointCircle(int x1, int y1, double r);	// 中点画圆算法2
+	void arcPaint(int x, int y, int dx, int dy, int color, int weightType, int flag);		//对称性画圆弧
+	void ArcPaint(int x, int y, double r, int start_angle, int end_angle); // 圆弧绘制
 
 	// 2 任意多边形的绘画、填充和裁剪
 	void seedFillAlgorithm(int x[], int y[],int n,int newcolor,int x0,int y0);		 //种子填充法
 	void Cohen_Sutherland(int x1, int y1, int x2, int y2,int LINETYPE);		//CS直线剪裁
 	void MidLineClip(int x1, int y1, int x2, int y2,int LINETYPE);		//中点分割算法
+	void SutherlandHodgmanClip(int wx1, int wx2, int wy1, int wy2);//多边形剪裁
 	// 改进扫描线算法
 	void Init(ET& T, Edge* edges, int edge_num);   //初始化活动边表结构体
 	int TableItemCount(Edge* edges, int edge_num, int* ymins);   //返回 item_num 表项的个数
@@ -713,7 +719,7 @@ void Painting::CirclePoints(int x, int y, int dx, int dy, int color, int weightT
 }
 
 // 中点算法画圆
-void Painting::MidPointCircle ()//中点画圆算法
+void Painting::MidPointCircle()//中点画圆算法
 {
 	int x1 = getX1(), y1 = getY1();
 	int x2 = getX2(), y2 = getY2();
@@ -777,10 +783,176 @@ void Painting::MidPointCircle(int x1, int y1, double r)
 	}
 }
 
+void Painting::arcPaint(int x, int y, int dx, int dy, int color, int weightType, int flag)
+{
+	switch (flag)
+	{
+	case 0:
+		putpixel(y + dx, x + dy, color); LineWidth(y + dx, x + dy, weightType, color, 0);
+		break;
+	case 1:
+		putpixel(x + dx, y + dy, color); LineWidth(x + dx, y + dy, weightType, color, 1);
+		break;
+	case 2:
+		putpixel(-x + dx, y + dy, color); LineWidth(-x + dx, y + dy, weightType, color, 1);
+		break;
+	case 3:
+		putpixel(-y + dx, x + dy, color); LineWidth(-y + dx, x + dy, weightType, color, 0);
+		break;
+	case 4:
+		putpixel(-y + dx, -x + dy, color); LineWidth(-y + dx, -x + dy, weightType, color, 0);
+		break;
+	case 5:
+		putpixel(-x + dx, -y + dy, color); LineWidth(-x + dx, -y + dy, weightType, color, 1);
+		break;
+	case 6:
+		putpixel(x + dx, -y + dy, color); LineWidth(x + dx, -y + dy, weightType, color, 1);
+		break;
+	case 7:
+		putpixel(y + dx, -x + dy, color); LineWidth(y + dx, -x + dy, weightType, color, 0);
+		break;
+	default:
+		break;
+	}
+}
+
+//任意圆弧绘制,输入角度制,逆时针方向,圆弧从x轴开始逆时针分为8段，编号为0~7
+void Painting::ArcPaint(int x, int y, double r, int start_angle, int end_angle)
+{
+	int lineType = getLineType();
+	int weightType = getWeightType();
+	int color = getColor();
+	int i = 0;
+	int flag_start, flag_end;
+	float xx, yy, e;
+
+	int* mask = LineType(lineType);
+
+	flag_start = start_angle / 45;
+	flag_end = end_angle / 45;
+	if (start_angle % 45 == 0 && end_angle % 45 == 0)
+	{
+		flag_end = flag_start;
+	}
+	else {
+		if (start_angle % 45 == 0)
+		{
+			flag_start--;
+		}
+		if (end_angle % 45 == 0)
+		{
+			flag_end--;
+		}
+	}
+	int j = flag_start;
+
+	while (j <= flag_end)
+	{
+		xx = 0;
+		yy = r;			//（x,y）用于确定第一个点
+		e = 1 - r;		//取得初始e
+		if (flag_start == flag_end)
+		{
+			while (xx <= yy) {
+				if (xx >= r * sin(float((start_angle % 45 == 0 ? 0 : start_angle % 45)) / 180 * PI) && xx <= r * sin(float((end_angle % 45 == 0 ? 45 : end_angle % 45)) / 180 * PI))
+				{
+					if (mask[i % 32])
+					{
+						arcPaint(xx, yy, x, y, color, weightType, j);	// 八分对称点
+					}
+					i++;
+				}
+				if (e < 0) {
+					xx++;
+					e = e + 2 * xx + 3;
+				}
+				else {
+					xx++;
+					yy--;
+					e = e + 2 * (xx - yy) + 5;
+				}
+			}
+		}
+		else if (flag_start == flag_end - 1)
+		{
+			while (xx <= yy) {
+
+				if (xx >= r * sin(float((start_angle % 45 == 0 ? 0 : start_angle % 45)) / 180 * PI) && j == flag_start)
+				{
+					if (mask[i % 32])
+					{
+						arcPaint(xx, yy, x, y, color, weightType, j);	// 八分对称点
+					}
+					i++;
+				}
+				else if (xx >= r * sin(float((end_angle % 45 == 0 ? 45 : end_angle % 45) - 45) / 180 * PI) && j != flag_start)
+				{
+					if (mask[i % 32])
+					{
+						arcPaint(xx, yy, x, y, color, weightType, j);	// 八分对称点
+					}
+					i++;
+				}
+				if (e < 0) {
+					xx++;
+					e = e + 2 * xx + 3;
+				}
+				else {
+					xx++;
+					yy--;
+					e = e + 2 * (xx - yy) + 5;
+				}
+			}
+		}
+		else
+		{
+			while (xx <= yy) {
+
+				if (xx >= r * sin(float((start_angle % 45 == 0 ? 0 : start_angle % 45)) / 180 * PI) && j == flag_start)
+				{
+					if (mask[i % 32])
+					{
+						arcPaint(xx, yy, x, y, color, weightType, j);	// 八分对称点
+					}
+					i++;
+				}
+				else if (xx >= r * sin(float((end_angle % 45 == 0 ? 45 : end_angle % 45) - 45) / 180 * PI) && j == flag_end)
+				{
+					if (mask[i % 32])
+					{
+						arcPaint(xx, yy, x, y, color, weightType, j);	// 八分对称点
+					}
+					i++;
+				}
+				else if (j != flag_start && j != flag_end)
+				{
+					if (mask[i % 32])
+					{
+						arcPaint(xx, yy, x, y, color, weightType, j);
+					}
+					i++;
+				}
+				if (e < 0) {
+					xx++;
+					e = e + 2 * xx + 3;
+				}
+				else {
+					xx++;
+					yy--;
+					e = e + 2 * (xx - yy) + 5;
+				}
+			}
+		}
+		j++;
+	}
+}
+
 /*
 	* 板块3
 	* 多边形绘制
 */
+vector<int> Yvec; 
+vector<int> Xvec; 
 // 填充算法 —— 扫描填充（用到栈）
 void ScanFill4(int x, int y, int oldcolor, int newcolor)
 {
@@ -930,6 +1102,175 @@ void Painting::seedFillAlgorithm(int x[], int y[], int n, int newcolor, int x0, 
 }
 
 
+//多边形剪裁
+void Painting::SutherlandHodgmanClip(int wx1, int wx2,int wy1,int wy2)
+{
+	
+	vector<int>temp_Xvec, temp_Yvec;
+	for (unsigned i = 0; i < Xvec.size() - 1; ++i)
+	{
+		//对于纵坐标小于上边界的点，将其保留在点集中
+		if (Yvec[i] <= wy2)
+		{
+			temp_Xvec.push_back(Xvec[i]);
+			temp_Yvec.push_back(Yvec[i]);
+		}
+		//如果多边形某一条边上的两点分别处在边界的两侧，则找出该直线与边界的交点，将交点放入向量中
+		if ((Yvec[i] - wy2) * (Yvec[i + 1] - wy2) < 0)
+		{
+			//首先考虑斜率不存在的情况
+			if (Xvec[i] == Xvec[i + 1])
+			{
+				temp_Xvec.push_back(Xvec[i]);
+				temp_Yvec.push_back(wy2);
+			}
+			//接着考虑斜率存在的情况，对于该情况，为了使得结果更加精确，对点的横坐标进行了四舍五入计算
+			else
+			{
+				int new_x = int(((double)(Xvec[i + 1] - Xvec[i]) / (Yvec[i + 1] - Yvec[i])) * (wy2 - Yvec[i]) + Xvec[i] + 0.5);
+				temp_Xvec.push_back(new_x);
+				temp_Yvec.push_back(wy2);
+			}
+		}
+	}
+	//接下来处理最后一个顶点以及最后一个顶点和第一个顶点的连线，处理方法与上类似
+	if (Yvec[Xvec.size() - 1] <= wy2)
+	{
+		temp_Xvec.push_back(Xvec[Xvec.size() - 1]);
+		temp_Yvec.push_back(Yvec[Xvec.size() - 1]);
+	}
+	if ((Yvec[Xvec.size() - 1] - wy2) * (Yvec[0] - wy2) < 0)
+	{
+		if (Xvec[Xvec.size() - 1] == Xvec[0])
+		{
+			temp_Xvec.push_back(Xvec[0]);
+			temp_Yvec.push_back(wy2);
+		}
+		else
+		{
+			int new_x = int(((double)(Xvec[Xvec.size() - 1] - Xvec[0]) / (Yvec[Yvec.size() - 1] - Yvec[0])) * (wy2 - Yvec[0]) + Xvec[0] + 0.5);
+			temp_Xvec.push_back(new_x);
+			temp_Yvec.push_back(wy2);
+		}
+	}
+	//将临时结果进行保存从而更新结果向量，同时清空临时向量便于下次重新使用
+	Xvec = temp_Xvec;
+	Yvec = temp_Yvec;
+	temp_Xvec.clear();
+	temp_Yvec.clear();
+
+	for (unsigned i = 0; i < Xvec.size() - 1; ++i)
+	{
+		if (Yvec[i] >= wy1)
+		{
+			temp_Xvec.push_back(Xvec[i]);
+			temp_Yvec.push_back(Yvec[i]);
+		}
+		if ((Yvec[i] - wy1) * (Yvec[i + 1] - wy1) < 0)
+		{
+			if (Xvec[i] == Xvec[i + 1])
+			{
+				temp_Xvec.push_back(Xvec[i]);
+				temp_Yvec.push_back(wy1);
+			}
+			else
+			{
+				int new_x = int(((double)(Xvec[i + 1] - Xvec[i]) / (Yvec[i + 1] - Yvec[i])) * (wy1 - Yvec[i]) + Xvec[i] + 0.5);
+				temp_Xvec.push_back(new_x);
+				temp_Yvec.push_back(wy1);
+			}
+		}
+	}
+	if (Yvec[Xvec.size() - 1] >= wy1)
+	{
+		temp_Xvec.push_back(Xvec[Xvec.size() - 1]);
+		temp_Yvec.push_back(Yvec[Xvec.size() - 1]);
+	}
+	if ((Yvec[Xvec.size() - 1] - wy1) * (Yvec[0] - wy1) < 0)
+	{
+		if (Xvec[Xvec.size() - 1] == Xvec[0])
+		{
+			temp_Xvec.push_back(Xvec[0]);
+			temp_Yvec.push_back(wy1);
+		}
+		else
+		{
+			int new_x = int(((double)(Xvec[Xvec.size() - 1] - Xvec[0]) / (Yvec[Yvec.size() - 1] - Yvec[0])) * (wy1 - Yvec[0]) + Xvec[0] + 0.5);
+			temp_Xvec.push_back(new_x);
+			temp_Yvec.push_back(wy1);
+		}
+	}
+	Xvec = temp_Xvec;
+	Yvec = temp_Yvec;
+	temp_Xvec.clear();
+	temp_Yvec.clear();
+
+	for (unsigned i = 0; i < Xvec.size() - 1; ++i)
+	{
+		if (Xvec[i] >= wx1)
+		{
+			temp_Xvec.push_back(Xvec[i]);
+			temp_Yvec.push_back(Yvec[i]);
+		}
+		if ((Xvec[i] - wx1) * (Xvec[i + 1] - wx1) < 0)
+		{
+			double k = (double)(Yvec[i + 1] - Yvec[i]) / (Xvec[i + 1] - Xvec[i]);
+			int new_y = int(k * (wx1 - Xvec[i]) + Yvec[i] + 0.5);
+			temp_Xvec.push_back(wx1);
+			temp_Yvec.push_back(new_y);
+		}
+	}
+	if (Xvec[Xvec.size() - 1] >= wx1)
+	{
+		temp_Xvec.push_back(Xvec[Xvec.size() - 1]);
+		temp_Yvec.push_back(Yvec[Xvec.size() - 1]);
+	}
+	if ((Xvec[Xvec.size() - 1] - wx1) * (Xvec[0] - wx1) < 0)
+	{
+		double k = (double)(Yvec[Xvec.size() - 1] - Yvec[0]) / (Xvec[Xvec.size() - 1] - Xvec[0]);
+		int new_y = int(k * (wx1 - Xvec[0]) + Yvec[0] + 0.5);
+		temp_Xvec.push_back(wx1);
+		temp_Yvec.push_back(new_y);
+	}
+	Xvec = temp_Xvec;
+	Yvec = temp_Yvec;
+	temp_Xvec.clear();
+	temp_Yvec.clear();
+
+	for (unsigned i = 0; i < Xvec.size() - 1; ++i)
+	{
+		if (Xvec[i] <= wx2)
+		{
+			temp_Xvec.push_back(Xvec[i]);
+			temp_Yvec.push_back(Yvec[i]);
+		}
+		if ((Xvec[i] - wx2) * (Xvec[i + 1] - wx2) < 0)
+		{
+			double k = (double)(Yvec[i + 1] - Yvec[i]) / (Xvec[i + 1] - Xvec[i]);
+			int new_y = int(k * (wx2 - Xvec[i]) + Yvec[i] + 0.5);
+			temp_Xvec.push_back(wx2);
+			temp_Yvec.push_back(new_y);
+		}
+	}
+	if (Xvec[Xvec.size() - 1] <= wx2)
+	{
+		temp_Xvec.push_back(Xvec[Xvec.size() - 1]);
+		temp_Yvec.push_back(Yvec[Xvec.size() - 1]);
+	}
+	if ((Xvec[Xvec.size() - 1] - wx2) * (Xvec[0] - wx2) < 0)
+	{
+		double k = (double)(Yvec[Xvec.size() - 1] - Yvec[0]) / (Xvec[Xvec.size() - 1] - Xvec[0]);
+		int new_y = int(k * (wx2 - Xvec[0]) + Yvec[0] + 0.5);
+		temp_Xvec.push_back(wx2);
+		temp_Yvec.push_back(new_y);
+	}
+	Xvec = temp_Xvec;
+	Yvec = temp_Yvec;
+	temp_Xvec.clear();
+	temp_Yvec.clear();
+
+
+}
 // 直线剪裁
 // cohen-sutherland 裁剪算法
 int encode(float x, float y, int XL, int XR, int YB, int YT)
@@ -997,7 +1338,6 @@ void Painting::Cohen_Sutherland(int x1, int y1, int x2, int y2, int LINETYPE)
 	setCoord(x1, y1, x2, y2);
 	Bresenhamline();
 }
-
 // 中点分割算法
 void Painting::MidLineClip(int x1, int y1, int x2, int y2, int LINETYPE)
 {
@@ -1184,7 +1524,6 @@ void Painting::drawBezierCurve(vector<Point> P, int n)
 void Painting::MouseClick(Painting painting, int type)		//鼠标点击
 {
 	MOUSEMSG m;
-	// m = GetMouseMsg();
 	int flag = 0;
 	int x1 = 0, y1 = 0, x2 = 0, y2 = 0;
 	int i = 0;
@@ -1200,6 +1539,9 @@ void Painting::MouseClick(Painting painting, int type)		//鼠标点击
 	vector<Point> controlPoint;	// 存储控制点
 	int n_controlPoint = 2;	// 控制点数量
 	int pos = 1;	// 新增控制点位置
+
+	IMAGE img;
+	getimage(&img, 0, 0, WINDOW_LENGTH, WINDOW_WIDTH);
 
 	while (1) {
 		m = GetMouseMsg();
@@ -1218,49 +1560,65 @@ void Painting::MouseClick(Painting painting, int type)		//鼠标点击
 			break;
 		}
 		else {
-			if (type == 0) {
-				if (m.uMsg == WM_LBUTTONDOWN)//判断鼠标是否按下
+			if (type == 0) {//直线
+				BeginBatchDraw();
+				if (flag == 0)
 				{
-					if (flag == 0)
-					{
-						x1 = m.x;
-						y1 = m.y;
-						flag = 1;
-					}
+					getimage(&img, 0, 0, WINDOW_LENGTH, WINDOW_WIDTH);
 				}
-				else if (m.uMsg == WM_LBUTTONUP)//判断鼠标是否弹起
+				if (m.uMsg == WM_LBUTTONDOWN && flag == 0)//判断鼠标是否按下
 				{
-					if (flag == 1)
-					{
-						x2 = m.x;
-						y2 = m.y;
-						painting.setCoord(x1, y1, x2, y2);	// 拾取并获取坐标
-						painting.MidPointline();
-						flag = 0;
-					}
+					x1 = m.x;
+					y1 = m.y;
+					flag = 1;
 				}
+				else if (m.uMsg == WM_MOUSEMOVE && flag == 1)
+				{
+					x2 = m.x;
+					y2 = m.y;
+					painting.setCoord(x1, y1, x2, y2);	// 拾取并获取坐标
+					putimage(0, 0, &img);
+					painting.MidPointline();
+				}
+				if (m.uMsg == WM_LBUTTONUP)//判断鼠标是否弹起
+				{
+					x2 = m.x;
+					y2 = m.y;
+					painting.setCoord(x1, y1, x2, y2);	// 拾取并获取坐标
+					painting.MidPointline();
+					flag = 0;
+				}
+				EndBatchDraw();
 			}
-			else if (type == 1) {
-				if (m.uMsg == WM_LBUTTONDOWN)//判断鼠标是否按下
+			else if (type == 1) {//圆
+				BeginBatchDraw();
+				if (flag == 0)
 				{
-					if (flag == 0)
-					{
-						x1 = m.x;
-						y1 = m.y;
-						flag = 1;
-					}
+					getimage(&img, 0, 0, WINDOW_LENGTH, WINDOW_WIDTH);
 				}
-				else if (m.uMsg == WM_LBUTTONUP)//判断鼠标是否弹起
+				if (m.uMsg == WM_LBUTTONDOWN && flag == 0)//判断鼠标是否按下
 				{
-					if (flag == 1)
-					{
-						x2 = m.x;
-						y2 = m.y;
-						painting.setCoord(x1, y1, x2, y2);	// 拾取并获取坐标
-						painting.MidPointCircle();
-						flag = 0;
-					}
+					x1 = m.x;
+					y1 = m.y;
+					flag = 1;
 				}
+				else if (m.uMsg == WM_MOUSEMOVE && flag == 1)
+				{
+					x2 = m.x;
+					y2 = m.y;
+					painting.setCoord(x1, y1, x2, y2);	// 拾取并获取坐标
+					putimage(0, 0, &img);
+					painting.MidPointCircle();
+				}
+				if (m.uMsg == WM_LBUTTONUP && flag == 1)//判断鼠标是否弹起
+				{
+					x2 = m.x;
+					y2 = m.y;
+					painting.setCoord(x1, y1, x2, y2);	// 拾取并获取坐标
+					painting.MidPointCircle();
+					flag = 0;
+				}
+				EndBatchDraw();
 			}
 			else if (type == 2)	// 画多边形
 			{

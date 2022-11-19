@@ -63,7 +63,13 @@
     <ClInclude Include="Po.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="BezierCurve.h">
+    <ClInclude Include="SolidCircleshape.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Action.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sun.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -77,8 +83,8 @@
     <ClCompile Include="Shape.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ClCompile Include="SolidCircleshape.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

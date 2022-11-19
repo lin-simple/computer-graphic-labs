@@ -3,11 +3,12 @@
 //多边形的边的数据结构
 typedef struct Edge
 {
-	int y_max, y_min; //该有向边的y坐标的最大值与最小值
-	double x, deltax; //该有向边的x的最小值以及x的变化的量（1/斜率）
-	struct Edge* next; //指向下一条边的指针
+	int y_max=0, y_min=0; //该有向边的y坐标的最大值与最小值
+	double x=0, deltax=0; //该有向边的x的最小值以及x的变化的量（1/斜率）
+	struct Edge* next=NULL; //指向下一条边的指针
 
 }Edge;
+
 //活动边表表项
 typedef struct TableItem
 {

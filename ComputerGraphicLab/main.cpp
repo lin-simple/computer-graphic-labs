@@ -3,11 +3,15 @@
 #include "Dipsy.h"
 #include "LaaLaa.h"
 #include "Po.h"
-#include "BezierCurve.h"
+#include "Action.h"
+#include "Sun.h"
 
-int main(int argc, char** argv)
+
+int main()
 {
 	initgraph(WINDOW_LENGTH, WINDOW_WIDTH, EW_SHOWCONSOLE);
+
+	/**/
 	
 	while (1) {
 		cout << "\n**************************" << endl
@@ -26,11 +30,12 @@ int main(int argc, char** argv)
 			rectangle(500, 5, 615, 25);
 			outtextxy(510, 7, L"退出鼠标绘图");
 			while (1) {
+				
 				cout << "\n**************************" << endl
 					<< "*   -----实验项目-----   *" << endl
 					<< "*                        *" << endl
 					<< "* A.直线段绘制           *" << endl
-					<< "* B.圆形绘制             *" << endl
+					<< "* B.圆形/圆弧绘制        *" << endl
 					<< "* C.多边形绘制           *" << endl
 					<< "* D.清空界面             *" << endl
 					<< "* E.图形变换             *" << endl
@@ -46,6 +51,7 @@ int main(int argc, char** argv)
 				Painting paintingPolygon = Painting();		// 多边形
 				Painting paintingPolygon2 = Painting();
 				Painting paintingBezierCurve = Painting();	// Bezier 曲线
+				Painting paintingarc = Painting();      //圆弧
 
 				char choice;
 				cout << "请选择所要进行的操作[A-Q]: ";
@@ -148,34 +154,92 @@ int main(int argc, char** argv)
 				case 'b': {	// 圆形绘制
 					while (1)
 					{
-						int x1, y1, r, weightType;
-						string color;
-						int lineType;
-						char ch;
-						cout << "是Y否N退出？";
-						cin >> ch;
-						if (ch == 'Y' || ch == 'y')
+						int choice;
+						cout << "请选择绘制圆或圆弧：1--圆，2--圆弧，0--退出" << endl;
+						cin >> choice;
+						switch (choice)
+						{
+						case 1:
+						{
+							// 圆形绘制
+							while (1)
+							{
+								int x1, y1, x2, y2, weightType;
+								string color;
+								int lineType;
+								char ch;
+								cout << "是Y否N退出？";
+								cin >> ch;
+								if (ch == 'Y' || ch == 'y')
+									break;
+
+								cout << "请输入圆起点(圆心)坐标: ";
+								cin >> x1 >> y1;
+								cout << "请输入圆终点坐标: ";
+								cin >> x2 >> y2;
+								cout << "请输入线段类型 [0.实线、1.点划线、2.虚线、3.长短线交替]: ";
+								cin >> lineType;
+								cout << "请输入线段宽度: ";
+								cin >> weightType;
+								cout << "请输入线段颜色: ";
+								cin >> color;
+
+								// 设置属性
+								paintingCircle.setCoord(x1, y1, x2, y2);
+								paintingCircle.setWeightType(weightType);
+								paintingCircle.setLineType(lineType);
+								paintingCircle.setColor(translateColor(color));
+
+								paintingCircle.MidPointCircle();
+								_getch();
+
+							}
 							break;
+						}
+						//圆弧绘制，输入原点、半径、起始角度、终止角度
+						case 2:
+						{
+							int x, y, start_angle, end_angle;
+							string color;
+							double r;
+							char choice1;
+							int lineType, weightType;
 
-						cout << "请输入圆起点(圆心)坐标: ";
-						cin >> x1 >> y1;
-						cout << "请输入圆半径: ";
-						cin >> r;
-						cout << "请输入线段类型 [0.实线、1.点划线、2.虚线、3.长短线交替]: ";
-						cin >> lineType;
-						cout << "请输入线段宽度: ";
-						cin >> weightType;
-						cout << "请输入线段颜色: ";
-						cin >> color;
+							while (1)
+							{
+								cout << "输入原点、半径、起始角度、终止角度：" << endl;
+								cin >> x;
+								cin >> y;
+								cin >> r;
+								cin >> start_angle;
+								cin >> end_angle;
 
-						// 设置属性
-						paintingCircle.setWeightType(weightType);
-						paintingCircle.setLineType(lineType);
-						paintingCircle.setColor(translateColor(color));
+								cout << "请输入线段类型 [0.实线、1.点划线、2.虚线、3.长短线交替]: ";
+								cin >> lineType;
+								paintingMouse.setLineType(lineType);
+								cout << "请输入线段宽度: ";
+								cin >> weightType;
 
-						paintingCircle.MidPointCircle(x1, y1, r);
-						_getch();
+								cout << "请输入线段颜色: ";
+								cin >> color;
+								paintingarc.setLineType(lineType);
+								paintingarc.setWeightType(weightType);
+								paintingarc.setColor(translateColor(color));
 
+								paintingarc.ArcPaint(x, y, r, start_angle, end_angle);
+
+								cout << "是否继续？是--y，否--n" << endl;
+								cin >> choice1;
+								if (choice1 == 'n')
+									break;
+							}
+							break;
+						}
+						default:
+							break;
+						}
+						if (choice == 0)
+							break;
 					}
 					break;
 				}
@@ -189,7 +253,8 @@ int main(int argc, char** argv)
 					char choice;
 					string fillColor, lineColor;
 					int lineType, weightType;
-
+					//IMAGE img1;
+					//getimage(&img1, 0, 0, WINDOW_LENGTH, WINDOW_WIDTH);
 
 					cout << "请输入线段类型 [0.实线、1.点划线、2.虚线、3.长短线交替]: ";
 					cin >> lineType;
@@ -207,10 +272,12 @@ int main(int argc, char** argv)
 					cin >> edges_num;
 
 					cout << "请依次输入每个顶点坐标(顺/逆时针)" << endl;
+					Xvec.clear(); Yvec.clear();
 					for (int i = 0; i < edges_num; i++) {
 						cout << "顶点" << i + 1 << ": ";
 						int x, y;
 						cin >> x >> y;
+						Xvec.push_back(x); Yvec.push_back(y);
 						edges[k++] = x;  edges[k++] = y;
 					}
 					edges[k] = edges[0]; edges[k + 1] = edges[1];
@@ -221,24 +288,120 @@ int main(int argc, char** argv)
 					}
 
 					Edge* newEdges = paintingPolygon2.InitEdges(edges, edges_num);
-					ET etable;
+					ET etable,etable1;
 					paintingPolygon2.Init(etable, newEdges, edges_num); //初始化活动边表
-
+					paintingPolygon2.Init(etable1, newEdges, edges_num);
 					cout << "是否进行颜色填充[Y/N]: ";
 					cin >> choice;
 					if (choice == 'Y' || choice == 'y') {
+						
 						cout << "请输入所要填充颜色: ";
 						cin >> fillColor;
+						
 						paintingPolygon2.myDrawPolygon(edges, edges_num);
-						paintingPolygon2.myScanFill(etable, translateColor(fillColor), max_y);
+						paintingPolygon2.myScanFill(etable1, translateColor(fillColor), max_y);
+						_getch();
+
+						cout << "请选择是否剪裁：" << endl;
+						cout << " 1.剪裁" << endl;
+						cout << " 2.不剪裁" << endl;
+						int h;
+						cin >> h;
+						if (h == 1) {
+							int wx1, wx2, wy1, wy2;
+							cout << "请输入左边界、下边界、右边界、上边界：" << endl;
+							cin >> wx1 >> wy1 >> wx2 >> wy2;
+							paintingPolygon2.setColor(BLACK);
+							paintingPolygon2.myDrawPolygon(edges, edges_num);
+							paintingPolygon2.myScanFill(etable,BLACK, max_y);
+							//_getch();
+
+							for (int i = 0; i < edges_num; i++) {
+								edges[k++] = 0;  edges[k++] = 0;
+							}
+							edges[k] = edges[0]; edges[k + 1] = edges[1];
+
+							
+							paintingPolygon2.SutherlandHodgmanClip( wx1, wx2, wy1, wy2);
+							int k = 0;
+							for (int i = 0; i < Xvec.size(); i++) {
+								edges[k++] = Xvec[i];  edges[k++] = Yvec[i];
+							}
+							edges[k] = edges[0]; edges[k + 1] = edges[1];
+							max_y = -1;
+							for (int i = 1; i < 2 * (Xvec.size() + 1); i += 2) {
+								if (edges[i] > max_y)
+									max_y = edges[i];
+							}
+
+							Edge* newEdges = paintingPolygon2.InitEdges(edges, Xvec.size());
+							ET Etable;
+							paintingPolygon2.Init(Etable, newEdges, Xvec.size()); //初始化活动边表
+							paintingPolygon2.myDrawPolygon(edges, Xvec.size());
+							//cleardevice();
+							//putimage(WINDOW_LENGTH, WINDOW_WIDTH, &img1); 
+							//Sleep(50);
+						    paintingPolygon2.myScanFill(Etable, translateColor(fillColor), max_y);
+							//paintingPolygon2.myScanFill(Etable, GREEN, max_y);
+							_getch();
+							break;
+						}
+						else if (h == 2)   break;
+						break;
 					}
 					else {
 						paintingPolygon2.myDrawPolygon(edges, edges_num);
+						cout << "请选择是否剪裁：" << endl;
+						cout << " 1.剪裁" << endl;
+						cout << " 2.不剪裁" << endl;
+						int h;
+						cin >> h;
+						if (h == 1) {
+							int wx1, wx2, wy1, wy2;
+							cout << "请输入左边界、下边界、右边界、上边界：" << endl;
+							cin >> wx1 >> wy1 >> wx2 >> wy2;
+							paintingPolygon2.setColor(BLACK);
+							paintingPolygon2.myDrawPolygon(edges, edges_num);
+							paintingPolygon2.myScanFill(etable, BLACK, max_y);
+							//_getch();
+
+							for (int i = 0; i < edges_num; i++) {
+								edges[k++] = 0;  edges[k++] = 0;
+							}
+							edges[k] = edges[0]; edges[k + 1] = edges[1];
+
+
+							paintingPolygon2.SutherlandHodgmanClip(wx1, wx2, wy1, wy2);
+							int k = 0;
+							for (int i = 0; i < Xvec.size(); i++) {
+								edges[k++] = Xvec[i];  edges[k++] = Yvec[i];
+							}
+							edges[k] = edges[0]; edges[k + 1] = edges[1];
+							max_y = -1;
+							for (int i = 1; i < 2 * (Xvec.size() + 1); i += 2) {
+								if (edges[i] > max_y)
+									max_y = edges[i];
+							}
+
+							Edge* newEdges = paintingPolygon2.InitEdges(edges, Xvec.size());
+							ET Etable;
+							paintingPolygon2.Init(Etable, newEdges, Xvec.size()); //初始化活动边表
+							paintingPolygon2.setColor(translateColor(lineColor));
+							paintingPolygon2.myDrawPolygon(edges, Xvec.size());
+							//cleardevice();
+							//putimage(WINDOW_LENGTH, WINDOW_WIDTH, &img1); 
+							//Sleep(50);
+							//paintingPolygon2.myScanFill(Etable, translateColor(fillColor), max_y);
+							//paintingPolygon2.myScanFill(Etable, GREEN, max_y);
+							_getch();
+							break;
+						}
+						else if (h == 2)   break;
+						_getch();
 					}
 
-					_getch();
-
-					break;
+					
+				break;
 				}
 
 				case 'D':
@@ -366,10 +529,6 @@ int main(int argc, char** argv)
 					int type;
 					cout << "请输入绘画图形类型 [0.直线、1.圆、2.多边形、3.曲线绘制]: ";
 					cin >> type;
-					if (type == 3) {
-						closegraph();
-						drawCurve(argc, argv);
-					}
 					if (type != 2) {
 						if (type != 3)
 						{
@@ -419,10 +578,20 @@ int main(int argc, char** argv)
 					//PointFill(280, 200, RED);
 
 					//_getch();
-					//closegraph();
 
-					//drawCurve(argc, argv);
 
+					//while (1) {
+					//	MOUSEMSG m = GetMouseMsg();
+					//	TCHAR control[10];
+					//	switch (m.uMsg)
+					//	{
+					//	case WM_LBUTTONDOWN:
+					//		_stprintf(control, _T("%d,%d"), m.x, m.y);        // 高版本 VC 推荐使用 _stprintf_s 函数
+					//		outtextxy(m.x, m.y, control);                //输出鼠标位置
+					//	default:
+					//		break;
+					//	}
+					//}
 					break;
 				}
 
@@ -440,30 +609,75 @@ int main(int argc, char** argv)
 			break;
 		}
 		case 2: {
-			setbkcolor(WHITE);
-			cleardevice();
-
-			Tinky tinky = Tinky();
-			Dipsy dipsy = Dipsy();
-			LaaLaa laalaa = LaaLaa();
-			Po po = Po();
-
-			rectangle(400, 5, 700, 25);
-			outtextxy(420, 7, L"致童年——天线宝宝主题二维动画");
 			
+			setbkcolor(WHITE);
+			Action action = Action();
+			char choice;
+			IMAGE background;//定义一个图片名.
+			//loadimage(&background, L"F:\\vs_new\\computer-graphic-labs2.0\\computer-graphic-labs2.0\\7.png");//从图片文件获取图像
+			loadimage(&background, L"..\\7.png");//从图片文件获取图像
 
+			setorigin(0, 0);
+			putimage(0, 0, &background);//绘制图像到屏幕，图片左上角坐标为(0,0)
+			action.Init();
+			//Sleep(100);
+			//mciSendString(L"open F:\\vs_new\\computer-graphic-labs2.0\\computer-graphic-labs2.0\\bgm.mp3 alias bgm", NULL, 0, NULL);
+			mciSendString(L"open ..\\bgm.mp3 alias bgm", NULL, 0, NULL);
+
+			mciSendString(L"setaudio bgm volume to 50", 0, 0, 0);
+			mciSendString(L"play bgm repeat", NULL, 0, NULL);
+			while (1)
+			{
+				cout << "\n**************************" << endl
+					   << "*    输入要进行的行为    *" << endl
+					   << "*                        *" << endl
+					   << "* A.打招呼               *" << endl
+					   //<< "* B.跳舞                 *" << endl
+					   << "* B.太阳东升西落         *" << endl
+					   << "* Q.退出                 *" << endl
+					   << "**************************" << endl;
+				cin >> choice;
+				switch (choice)
+				{
+				case 'A':
+				case 'a':
+				{
+					mciSendString(L"stop bgm", NULL, 0, NULL);
+					action.Hello();
+					mciSendString(L"resume bgm", NULL, 0, NULL);
+				break; 
+				}
+				/*case 'B':
+				case 'b':
+					break;*/
+				case 'B':
+				case 'b':
+				{
+					Sun s = Sun();
+					s.drawSun();
+				break; }
+				case  'Q':
+				case  'q':
+					break;
+				default:
+					break;
+				}
+				if (choice == 'Q' || choice == 'q')
+				{
+					break;
+				}
+			}
 			break;
 		}
 		default:
 			break;
 		}
-
 		if (CHOICE == 0)
 			break;
 	}
 	
-	
 	_getch();
+	mciSendString(L"close bgm", NULL, 0, NULL);
 	closegraph();
 
 	return 0;

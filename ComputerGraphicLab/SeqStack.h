@@ -27,6 +27,7 @@ public:
 	Status Pop(ElemType& e);					    // 出栈
 	SeqStack(const SeqStack<ElemType>& s);		// 复制构造函数
 	SeqStack<ElemType>& operator =(const SeqStack<ElemType>& s); // 赋值语句重载
+	void sb(ElemType& s, int x);
 };
 
 
@@ -142,4 +143,10 @@ SeqStack<ElemType>& SeqStack<ElemType>::operator = (const SeqStack<ElemType>& s)
 	return *this;
 }
 
+template<class ElemType>
+void SeqStack<ElemType>::sb(ElemType& s,int x)
+// 操作结果：将栈s赋值给当前栈--赋值语句重载
+{
+	s = elems[x];
+}
 #endif
